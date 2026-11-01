@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>Para mi shelito ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff5f6;--panel:#fffafb;--gold:#bd9650;--pale:#8e263b;--text:#542532;--muted:#8c6870;--rose:#f4cbd4;--deepred:#8e263b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Montserrat, sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.hero{min-height:100svh;display:grid;place-items:center;text-align:center;padding:55px 22px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 45%,#302516 0%,#17120c 36%,#090909 76%)}
+.hero:before,.hero:after{content:"✧";position:absolute;color:#c9a45c25;font-size:clamp(130px,25vw,300px);pointer-events:none}
+.hero:before{top:-45px;left:-30px}.hero:after{bottom:-85px;right:-20px}
+.hero-inner{max-width:800px;position:relative;z-index:1}
+.kicker{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--gold)}
+.rule{height:1px;width:65px;background:var(--gold);margin:25px auto}
+h1,h2,h3,.serif{font-family:"Cormorant Garamond",serif;font-weight:400}
+h1{font-size:clamp(58px,10vw,108px);line-height:.92;margin:28px 0}
+h1 em{display:block;color:var(--gold);font-weight:500}
+.hero p{max-width:520px;margin:22px auto;color:#d0c5b4;font-family:"Cormorant Garamond",serif;font-size:22px;line-height:1.5}
+.gold-btn{border:1px solid var(--gold);background:transparent;color:var(--pale);padding:14px 25px;letter-spacing:2px;text-transform:uppercase;font-size:10px;transition:.25s}
+.gold-btn:hover{background:var(--gold);color:#090909}
+.scroll-hint{position:absolute;bottom:22px;font-size:9px;letter-spacing:4px;color:var(--gold)}
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:center;gap:clamp(12px,3vw,34px);flex-wrap:wrap;padding:17px 10px;background:#090909ed;border-bottom:1px solid #c9a45c35;backdrop-filter:blur(12px)}
+nav a{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#cfc3ae}
+nav a:hover{color:var(--gold)}
+section{padding:92px 7%;text-align:center}
+.section-kicker{color:var(--gold);font-size:9px;letter-spacing:4px;text-transform:uppercase;margin-bottom:15px}
+.section-title{font-size:clamp(40px,6vw,62px);margin-bottom:15px}
+.section-title span{color:var(--gold);font-style:italic}
+.intro{max-width:550px;margin:0 auto 42px;color:var(--muted);font-size:12px;line-height:2}
+.letters{background:linear-gradient(#12100d,#090909)}
+.letter-grid{max-width:1000px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.letter-card{background:linear-gradient(145deg,#211b12,#100f0d);border:1px solid #c9a45c55;padding:32px 23px;transition:.3s}
+.letter-card:hover{transform:translateY(-6px);border-color:var(--gold)}
+.letter-icon{font-size:27px;color:var(--gold);margin-bottom:15px}
+.letter-card h3{font-size:29px;margin-bottom:10px}
+.letter-card p{font-size:11px;color:var(--muted);line-height:1.8;min-height:40px}
+.text-btn{margin-top:20px;border:0;border-bottom:1px solid var(--gold);padding:0 0 6px;background:none;color:var(--gold);font-size:9px;letter-spacing:2px}
+.modal{display:none;position:fixed;inset:0;z-index:30;background:#000e;padding:20px;align-items:center;justify-content:center}
+.paper{max-width:600px;width:100%;max-height:85vh;overflow:auto;background:#17140f;border:1px solid var(--gold);padding:clamp(25px,5vw,45px);text-align:left;box-shadow:0 15px 70px #000}
+.paper h2{font-size:39px;color:var(--gold);margin-bottom:20px}
+.paper p{font-family:"Cormorant Garamond",serif;font-size:20px;line-height:1.8;color:#e4dacb;white-space:pre-line}
+.close{display:block;margin:25px auto 0;border:1px solid var(--gold);background:none;color:var(--gold);padding:10px 24px}
+.time{background:radial-gradient(ellipse at center,#211a0f,#0a0908 70%)}
+.time-box{max-width:780px;margin:auto;border:1px solid #c9a45c80;padding:38px 20px;background:#100e0bcc}
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:28px 0}
+.time-number{font-family:"Cormorant Garamond",serif;color:var(--gold);font-size:clamp(38px,7vw,68px)}
+.time-label{font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+.time-note{font-family:"Cormorant Garamond",serif;color:var(--pale);font-size:24px;font-style:italic}
+.time-help{font-size:10px;color:#817767;margin-top:15px}
+.music{background:#11100e}
+.music-card{max-width:470px;margin:auto;padding:32px;border:1px solid #c9a45c60;background:#17140f}
+.vinyl{width:175px;height:175px;border-radius:50%;margin:0 auto 22px;border:1px solid var(--gold);display:grid;place-items:center;background:repeating-radial-gradient(circle,#17130d 0 8px,#302414 9px 10px);box-shadow:0 0 35px #c9a45c25}
+.vinyl span{width:48px;height:48px;border-radius:50%;background:var(--gold);color:#17110a;display:grid;place-items:center;font-size:21px}
+.music-card h3{font-size:34px}.music-card p{font-size:11px;color:var(--muted);margin:7px 0 22px}
+audio{width:100%;accent-color:var(--gold)}
+.moments{background:#0c0b09}
+.moment-grid{max-width:1100px;margin:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.moment{padding:11px 11px 24px;background:#17140f;border:1px solid #c9a45c50;transition:.3s}
+.moment:hover{transform:translateY(-5px);border-color:var(--gold)}
+.moment img{width:100%;height:340px;object-fit:cover;display:block;margin-bottom:20px}
+.moment .num{font-size:9px;letter-spacing:3px;color:var(--gold)}
+.moment h3{font-size:27px;margin:10px 0}
+.moment p{font-size:11px;line-height:1.9;color:var(--muted);padding:0 8px}
+.final{padding:125px 20px;background:radial-gradient(ellipse at center,#302416,#090909 72%)}
+.final h2{font-size:clamp(48px,8vw,82px);font-style:italic;color:var(--gold)}
+.final p{max-width:600px;margin:25px auto;font-family:"Cormorant Garamond",serif;font-size:22px;line-height:1.8;color:#ded2bd}
+.heart{font-size:30px;color:var(--gold);animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.25)}}
+footer{padding:24px;text-align:center;border-top:1px solid #c9a45c35;color:#88795e;font-size:9px;letter-spacing:3px}
+.float{position:fixed;bottom:-25px;z-index:20;pointer-events:none;color:var(--gold);animation:rise 7s linear forwards}
+@keyframes rise{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@media(max-width:760px){.moment-grid{grid-template-columns:1fr;max-width:440px}.moment img{height:390px}}
+@media(max-width:480px){section{padding:75px 6%}nav{gap:13px}nav a{font-size:8px}.time-grid{gap:3px}.time-label{font-size:7px}.music-card{padding:24px}}
+
+/* TEMA ROSA PASTEL + DORADO + ROJO */
+body{background:#fff7f8;color:#542532}
+.hero{background:radial-gradient(ellipse at 50% 42%,#fff0f2 0%,#f9dfe5 48%,#f4cbd4 100%)}
+.hero:before,.hero:after{color:#bd965025}
+.hero p{color:#80515d}
+.hero .kicker,.section-kicker,.kicker{color:#9a6e2e}
+.gold-btn{color:#8e263b;border-color:#bd9650}
+.gold-btn:hover{background:#bd9650;color:#fff}
+nav{background:#fff9faed;border-bottom:1px solid #bd965055}
+nav a{color:#754653}
+nav a:hover{color:#a12f49}
+section{color:#542532}
+.letters{background:linear-gradient(#fff8f9,#f9e9ed)}
+.letter-card{background:linear-gradient(145deg,#fffefe,#f8e8ec);border:1px solid #d9b875;box-shadow:0 12px 30px #8e263b0b}
+.letter-card h3,.moment h3{color:#7e263b}
+.letter-card p,.moment p,.intro{color:#896b72}
+.letter-icon,.text-btn{color:#a12f49}
+.text-btn{border-bottom-color:#bd9650}
+.modal{background:#4c1724a8}
+.paper{background:#fff8f5;border-color:#bd9650;box-shadow:0 15px 70px #4c172433}
+.paper h2{color:#9a3048}
+.paper p{color:#69434d}
+.close{border-color:#bd9650;color:#8e263b}
+.time{background:radial-gradient(ellipse at center,#fff0f2,#f7e1e6 72%)}
+.time-box{background:#fffafa;border:1px solid #bd9650;box-shadow:0 12px 35px #8e263b12}
+.time-number{color:#9b3048}
+.time-label{color:#896b72}
+.time-note{color:#8e263b}
+.time-help{color:#9a7a80}
+.music{background:#fdf0f2}
+.music-card{background:#fffafa;border:1px solid #bd9650;box-shadow:0 12px 35px #8e263b12}
+.vinyl{border-color:#bd9650;background:repeating-radial-gradient(circle,#8e263b 0 8px,#b84b60 9px 10px);box-shadow:0 0 35px #bd965033}
+.vinyl span{background:#e7c47e;color:#7b263a}
+.music-card h3{color:#8e263b}
+.music-card p{color:#896b72}
+.moments{background:#fff8f9}
+.moment{background:#fffdfc;border:1px solid #d9b875;box-shadow:0 12px 30px #8e263b0b}
+.moment img{border:1px solid #e4c8a0;filter:none}
+.moment .num{color:#a27635}
+.final{background:radial-gradient(ellipse at center,#f5d9df,#fff6f7 72%)}
+.final h2{color:#8e263b}
+.final p{color:#754653}
+.final .heart{color:#a12f49}
+footer{background:#fffafb;border-top:1px solid #d9b875;color:#9a6e2e}
+.float{color:#b23a52}
+
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="kicker">01 · Noviembre · 2026</div>
+    <div class="rule"></div>
+    <h1>Feliz cumpleaños<em>mi shelito</em></h1>
+    <div class="rule"></div>
+    <p>Hoy celebro tu vida, tu sonrisa y la suerte tan bonita de tenerte en la mía.</p>
+    <button class="gold-btn" onclick="document.querySelector('#cartas').scrollIntoView()">Abrir tu sorpresa ♡</button>
+  </div>
+  <div class="scroll-hint">DESLIZA PARA DESCUBRIR ↓</div>
+</header>
+
+<nav>
+  <a href="#inicio">Inicio</a><a href="#cartas">Cartitas</a><a href="#tiempo">Nuestro tiempo</a><a href="#musica">Nuestra canción</a><a href="#momentos">Recuerdos</a>
+</nav>
+
+<section class="letters" id="cartas">
+  <div class="section-kicker">02 · Cositas que quiero decirte</div>
+  <h2 class="section-title">Unas cartas <span>para ti</span></h2>
+  <p class="intro">Hay sentimientos que merecen quedarse escritos. Abre cada sobrecito; los puedes personalizar en el código.</p>
+  <div class="letter-grid">
+    <article class="letter-card"><div class="letter-icon">♡</div><h3>Para mi shelito</h3><p>Unas palabras que nacen de todo lo que siento por ti.</p><button class="text-btn" onclick="openLetter(0)">ABRIR CARTA →</button></article>
+    <article class="letter-card"><div class="letter-icon">✧</div><h3>Lo que significas</h3><p>Pequeñas cosas que quizás no te digo todos los días.</p><button class="text-btn" onclick="openLetter(1)">ABRIR CARTA →</button></article>
+    <article class="letter-card"><div class="letter-icon">∞</div><h3>Mis deseos para ti</h3><p>Todo lo bonito que deseo para este nuevo año de tu vida.</p><button class="text-btn" onclick="openLetter(2)">ABRIR CARTA →</button></article>
+  </div>
+</section>
+
+<div class="modal" id="letterModal" onclick="if(event.target===this)closeLetter()">
+  <div class="paper"><h2 id="letterTitle"></h2><p id="letterText"></p><button class="close" onclick="closeLetter()">Cerrar cartita</button></div>
+</div>
+
+<section class="time" id="tiempo">
+  <div class="section-kicker">03 · Nuestra historia</div>
+  <h2 class="section-title">El tiempo <span>contigo</span></h2>
+  <p class="intro">Cada día suma una página más a nuestra historia. Y yo quiero seguir llenándola de recuerdos bonitos.</p>
+  <div class="time-box">
+    <div class="section-kicker">Desde que comenzó nuestra relación</div>
+    <div class="time-grid">
+      <div><div class="time-number" id="years">—</div><div class="time-label">Años</div></div>
+      <div><div class="time-number" id="months">—</div><div class="time-label">Meses</div></div>
+      <div><div class="time-number" id="days">—</div><div class="time-label">Días</div></div>
+      <div><div class="time-number" id="hours">—</div><div class="time-label">Horas</div></div>
+    </div>
+    <div class="time-note">Y todavía nos quedan tantos momentos por vivir. ♡</div>
+    <div class="time-help">Puedes colocar la fecha real de inicio en la sección CONFIGURACIÓN del código.</div>
+  </div>
+</section>
+
+<section class="music" id="musica">
+  <div class="section-kicker">04 · Nuestra canción</div>
+  <h2 class="section-title">Una canción <span>que nos recuerda</span></h2>
+  <p class="intro">Porque hay canciones que se vuelven especiales cuando nos hacen pensar en una persona.</p>
+  <div class="music-card">
+    <div class="vinyl"><span>♫</span></div>
+    <h3>Mi gran amor</h3><p>Jorge Cuellar · Para mi shelito</p>
+    <audio controls preload="metadata">
+      <source src="mi-gran-amor.mp3" type="audio/mpeg">
+      Tu navegador no puede reproducir este audio.
+    </audio>
+    <p style="margin-top:18px">Dale play y deja que esta canción también sea parte de tu día. ♡</p>
+  </div>
+</section>
+
+<section class="moments" id="momentos">
+  <div class="section-kicker">05 · Pedacitos de nosotros</div>
+  <h2 class="section-title">Nuestros <span>momentos</span></h2>
+  <p class="intro">Son recuerdos que quizá parecen sencillos, pero que yo guardo en un lugar muy especial.</p>
+  <div class="moment-grid">
+    <article class="moment">
+      <img src="foto1.jpeg" alt="Nuestra salida a comer">
+      <div class="num">RECUERDO Nº 01</div>
+      <h3>La vez que me invitaste a comer</h3>
+      <p>Los primeros días de nuestra reconciliación. Una salida que guardo con muchísimo cariño porque fue parte de volver a encontrarnos y crear nuevos recuerdos juntos.</p>
+    </article>
+    <article class="moment">
+      <img src="foto2.jpeg" alt="Mi shelito durmiendo">
+      <div class="num">RECUERDO Nº 02</div>
+      <h3>Tú durmiendo, tan lindo</h3>
+      <p>Tan tranquilito, sin miedo alguno. Quizá tú ni cuenta te dabas, pero yo te veía y pensaba en lo bonito que es poder compartir hasta esos momentos simples contigo.</p>
+    </article>
+    <article class="moment">
+      <img src="foto3.jpeg" alt="Nuestros anillos de relación">
+      <div class="num">RECUERDO Nº 03</div>
+      <h3>Y mi momento favorito...</h3>
+      <p>Cuando compraste nuestros anillos de relación. Aun con la visita de tu mami y tus hermanos, supe que ibas muy en serio. Ese detalle significó muchísimo para mí y siempre lo voy a recordar.</p>
+    </article>
+  </div>
+</section>
+
+<section class="final">
+  <div class="section-kicker">Con todo mi amor</div>
+  <h2>Feliz vida, mi shelito</h2>
+  <p>Deseo que este nuevo año te acerque a todos tus sueños, que nunca te falten motivos para sonreír y que la vida te sorprenda con cosas hermosas. Gracias por nuestros momentos, por las risas y por todo lo bonito que todavía nos queda por vivir. Hoy celebro tu vida y también la suerte de coincidir contigo.</p>
+  <div class="heart">♡</div>
+  <p style="font-size:27px;color:var(--pale)">Te quiero muchísimo.</p>
+  <div class="section-kicker">Hecho especialmente para ti · 01.11.2026</div>
+</section>
+<footer>UNA PEQUEÑA PARTE DE TODO LO QUE SIENTO POR TI ♡</footer>
+
+<script>
+// =====================================================
+// CONFIGURACIÓN: EDITA AQUÍ SIN MIEDO
+// =====================================================
+
+// Escribe la fecha en que comenzaron oficialmente.
+// Formato: "AAAA-MM-DD". Ejemplo: "2025-08-14"
+const FECHA_INICIO = "2025-06-13";
+
+// Puedes cambiar el contenido de cada carta aquí.
+const cartas = [
+  {
+    titulo: "Para mi shelito ♡",
+    texto: `Mi amor:
+
+Hoy es un día muy especial, porque el mundo tuvo la suerte de recibir a una persona maravillosa y yo tengo la suerte de poder compartir mi vida contigo.
+
+No sabes lo bonito que es tenerte a mi lado, encontrar felicidad en tus abrazos, tranquilidad en tus palabras y amor en esos pequeños detalles que quizás para ti parecen simples, pero que para mí significan muchísimo. Me encanta compartir mis días contigo, reírnos por cualquier tontería, mirarte y pensar en lo afortunada que soy de tenerte.
+
+Quisiera que pudieras verte a través de mis ojos para que entiendas lo especial que eres para mí. Eres esa personita que logra sacarme sonrisas incluso en los días difíciles, quien hace que los momentos más sencillos se conviertan en mis favoritos y con quien me gustaría seguir escribiendo muchísimas páginas de nuestra historia.
+
+No sé qué nos tenga preparado el futuro, pero sí sé que me hace ilusión imaginarlo contigo. Quiero seguir conociéndote, abrazándote, apoyándote en tus sueños, celebrando tus logros y construyendo recuerdos que algún día podamos mirar con una sonrisa.
+
+Espero que nunca dudes de lo mucho que te quiero y de lo feliz que me hace tenerte en mi vida. Si pudiera pedir un deseo para este día, sería que la vida te devuelva multiplicada toda la felicidad que tú me haces sentir.
+
+Feliz cumpleaños, mi amor. Que bonito es coincidir contigo y qué bonito sería seguir eligiéndonos una y mil veces más. Te amo. ♡`
+  },
+  {
+    titulo: "Lo que significas para mí",
+    texto: `Me encanta nuestra historia, nuestras ocurrencias, las risas inesperadas, los pequeños detalles y hasta esos momentos que quizás para los demás no significan mucho, pero que para mí tienen un valor enorme porque los comparto contigo.
+
+Me gusta guardar cada recuerdo a tu lado, desde los momentos más especiales hasta los más sencillos, porque de alguna manera todos se convierten en pedacitos de nuestra historia. Y me hace mucha ilusión saber que todavía nos esperan tantas experiencias, aventuras y recuerdos por crear juntos.
+
+Gracias por permitirme formar parte de tu vida, por compartir conmigo tus días, tus sueños y tu cariño. Quiero seguir siendo parte de tus alegrías, acompañarte en tus días difíciles y estar presente en cada etapa que nos toque vivir.
+
+No sé cuántos recuerdos nos falten por crear, pero sí sé que quiero que muchos de ellos sean contigo. Porque, entre tantas personas en el mundo, qué bonito ha sido encontrarte y poder llamarte mi amor.
+
+Eres y siempre serás alguien muy especial para mí. ♡`
+  },
+  {
+    titulo: "Mis deseos para ti",
+    texto: `Deseo de todo corazón que nunca te falten la salud, la tranquilidad y las fuerzas para seguir luchando por todo aquello que quieres conseguir. Que nunca dejes de creer en ti, ni siquiera en esos días en los que las cosas no salgan como esperas. Quiero que siempre tengas motivos para sonreír y recordar lo mucho que vales.
+
+Me hace muy feliz pensar en todo lo que todavía te falta por vivir y conseguir. Quiero verte cumplir tus sueños, celebrar cada uno de tus logros y estar ahí para recordarte lo orgullosa que estoy de ti. Quizás no siempre tenga las palabras exactas para animarte, pero quiero que sepas que voy a creer en ti incluso cuando tú mismo dudes de lo que eres capaz.
+
+Espero que este nuevo año de vida te regale muchísimas alegrías, momentos bonitos y experiencias que se queden para siempre en tu corazón. Y yo, por mi parte, espero poder seguir compartiendo muchos de esos momentos contigo, acompañándote, consintiéndote, abrazándote y haciendo que tus días sean un poquito más bonitos.
+
+Nunca dejes de perseguir lo que te hace feliz, mi amor. No sabes cuánto deseo verte cumplir todo lo que te propones. Quiero verte crecer, cumplir tus metas y disfrutar de cada cosa bonita que la vida te regale.
+
+Y recuerda que, entre todas las personas que pueden celebrar tus logros, aquí tienes a alguien que siempre va a estar feliz de verte avanzar. Te amo muchísimo, mi vida. ♡
+
+Que este nuevo año de vida te traiga muchísima
+felicidad y momentos que te hagan sonreír.
+
+¡Feliz cumpleaños, mi shelito! ♡`
+  }
+];
+
+// =====================================================
+// FUNCIONES DE LA PÁGINA
+// =====================================================
+function openLetter(i){
+  document.getElementById("letterTitle").textContent=cartas[i].titulo;
+  document.getElementById("letterText").textContent=cartas[i].texto;
+  document.getElementById("letterModal").style.display="flex";
+}
+function closeLetter(){document.getElementById("letterModal").style.display="none";}
+
+function updateTime(){
+  const start=new Date(FECHA_INICIO+"T00:00:00");
+  const now=new Date();
+  if(Number.isNaN(start.getTime()) || start>now){
+    ["years","months","days","hours"].forEach(id=>document.getElementById(id).textContent="—");
+    return;
+  }
+  let y=now.getFullYear()-start.getFullYear();
+  let m=now.getMonth()-start.getMonth();
+  let d=now.getDate()-start.getDate();
+  if(d<0){m--;d+=new Date(now.getFullYear(),now.getMonth(),0).getDate();}
+  if(m<0){y--;m+=12;}
+  const h=now.getHours();
+  document.getElementById("years").textContent=y;
+  document.getElementById("months").textContent=m;
+  document.getElementById("days").textContent=d;
+  document.getElementById("hours").textContent=h;
+}
+updateTime();setInterval(updateTime,60000);
+
+// Pequeños destellos dorados flotantes
+function floatingDetail(){
+  const el=document.createElement("span");
+  el.className="float";el.textContent=Math.random()>.5?"♡":"✧";
+  el.style.left=Math.random()*100+"vw";
+  el.style.fontSize=(12+Math.random()*13)+"px";
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),7000);
+}
+setInterval(floatingDetail,1800);
+</script>
+</body>
+</html>
